@@ -1,5 +1,6 @@
 class ParametrosController < BaseController
   before_action :set_parametro, only: [:show, :edit, :update, :destroy]
+  layout "application1"
 
   # GET /parametros
   # GET /parametros.json

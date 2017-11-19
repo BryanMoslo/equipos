@@ -3,30 +3,30 @@ class ValorParametrosController < ApplicationController
   require 'pp'
   # GET /valor_parametros
   # GET /valor_parametros.json
-  def index   
+  def index
       @sw=params[:sw]
        @valor_parametros=ValorParametro.where("parametro_id = ?",params[:id])
-     
+
       # @valor_parametros = ValorParametro.all
-   
-    render layout: "application1"
+
+    render layout: "application2"
   end
 
   # GET /valor_parametros/1
   # GET /valor_parametros/1.json
   def show
-     render layout: "application1"
+     render layout: "application2"
   end
 
   # GET /valor_parametros/new
   def new
     @valor_parametro = ValorParametro.new
-    render layout: "application1"
+    render layout: "application2"
   end
 
   # GET /valor_parametros/1/edit
   def edit
-     render layout: "application1"
+     render layout: "application2"
   end
 
   # POST /valor_parametros

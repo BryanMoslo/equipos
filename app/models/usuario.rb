@@ -13,22 +13,22 @@
 #
 
 include Servicios
-class Usuario < ApplicationRecord  
+class Usuario < ApplicationRecord
 	 before_save :encriptarPass
-	
+
    has_many :rol_opcion_operacione
-      
+
   validates :usuario, presence: true, length: { minimum: 4 },
-    uniqueness: { case_sensitive: false,message: "Usuario existe. Verifique" }
+    uniqueness: { case_sensitive: false,message: "existe, por favor verifique" }
   validates :password, presence: {message: "Debe agregar un password valido." }
 
   scope :sin_eliminados, -> { where(eliminado: 0)   }
 
-  private 
-  def encriptarPass 
-    if self.password !=nil           	
+  private
+  def encriptarPass
+    if self.password !=nil
     	self.password = Digest::MD5.hexdigest(self.password)
-    end    
+    end
  end
 
 end

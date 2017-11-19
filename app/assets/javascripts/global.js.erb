@@ -1,0 +1,46 @@
+$(document).ready(function() {
+  $('[data-toggle="tooltip"]').tooltip();
+
+  $('body').on('click', '#tabs a.tab', function(event) {
+    // Get the tab name
+    var contentName = $(this).attr("id") + "_content";
+
+    // hide all other tabs
+    $("#content > div").hide();
+    $("#tabs li").removeClass("current");
+
+    // show current tab
+    $("#" + contentName).show();
+    $(this).parent().addClass("current");
+
+    $(".child").removeClass("active");
+    var classes = $(this).attr("id");
+    $("a[rel="+classes+"]").addClass("active");
+  });
+
+  $('body').on('click', '#tabs a.remove', function(event) {
+    // Get the tab name
+    var tabid = $(this).parent().find(".tab").attr("id");
+
+    // remove tab and related content
+    var contentname = tabid + "_content";
+    $("#" + contentname).remove();
+    $(this).parent().remove();
+
+    if($(this).parent().hasClass( "current" )){
+      $(".child").removeClass("active");
+    }
+
+    // if there is no current tab and if there are still tabs left, show the first one
+    if ($("#tabs li.current").length === 0 && $("#tabs li").length > 0) {
+      // find the first tab
+      var firsttab = $("#tabs li:first-child");
+      firsttab.addClass("current");
+
+      // get its link name and show related content
+      var firsttabid = $(firsttab).find("a.tab").attr("id");
+      $("#" + firsttabid + "_content").show();
+      $("a[rel="+firsttabid+"]").addClass("active");
+    }
+  });
+});

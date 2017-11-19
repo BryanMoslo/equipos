@@ -1,9 +1,17 @@
 class InicioController < ApplicationController
-	def casa	
-	 render layout: "application"
-	 #redirect_to "http://elheraldo.co"	
-	 #render html: "<h1>Hola mundo cruel</h1>".html_safe
-	 #render file: "public/404.html"
+
+	def index
+		@usuarios = Usuario.all
+		@equipos = []
 	end
-	
+
+	def usuarios
+		@model = Usuario.all
+
+		render json: @model
+	end
+
+	def equipos
+		render json: {}
+	end
 end

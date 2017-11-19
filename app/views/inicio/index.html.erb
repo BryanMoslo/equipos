@@ -1,0 +1,66 @@
+<div id="wrapper" class="col-md-10 p-0">
+  <div class="d-flex">
+    <ul id="tabs" class="bg-light col-md-10">
+
+    </ul>
+
+    <div class="dropdown col-md-2 bg-light d-flex align-items-center justify-content-center">
+      <a class="dropdown-toggle d-flex justify-content-evenly align-items-center" data-toggle="dropdown" href="#">
+        <i class="fa fa-user fa-fw"></i>
+        <%= session[:usuario] %>
+      </a>
+      <ul class="dropdown-menu dropdown-user">
+        <li><a href="#"><i class="fa fa-gear fa-fw"></i>Cambiar Pwd</a></li>
+        <li class="divider"></li>
+        <li><a href="/logout"><i class="fa fa-sign-out fa-fw"></i> Salir</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="content">
+    <!-- Tab content goes here -->
+  </div>
+</div>
+
+
+<script type="text/javascript">
+	window.onload = function(){
+		$("#documents .child").click(function() {
+			addTab($(this));
+		});
+
+		function addTab(link) {
+			// hide other tabs
+			$("#tabs li").removeClass("current");
+			$("#content > div").hide();
+
+      $(".child").removeClass("active");
+      $(link).addClass("active");
+
+			var model = $(link).attr("rel");
+
+			// If tab already exist in the list, return
+			if ($("#" + model).length !== 0){
+				$("#" + model).parent("li").addClass('current');
+				$("#" + model + "_content").show();
+				return;
+			}
+
+			// add new tab and related content
+			$("#tabs").append("<li class='current'><a class='tab' id='" +
+				model + "' href='#'>" + $(link).html() +
+				"</a><a href='#' class='remove fa fa-close'></a></li>");
+
+          var height = $(window).height() - $("#tabs").height() - 20;
+          var modelContent = '<iframe src="/'+model+'" frameborder="0" style="border:0;width:100%; height:'+height+'px;" scrolling="no"></iframe>'
+
+					$("#content").append("<div id='" + model + "_content'>" +
+			 		modelContent + "</div>");
+
+
+
+			// set the newly added tab as current
+			$("#" + model + "_content").show();
+		}
+	};
+</script>

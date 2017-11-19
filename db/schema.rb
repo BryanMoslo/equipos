@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171116060742) do
+ActiveRecord::Schema.define(version: 20171117034630) do
 
   create_table "opciones", force: :cascade do |t|
     t.integer "idpadre"
@@ -29,6 +29,21 @@ ActiveRecord::Schema.define(version: 20171116060742) do
     t.string "atributo"
     t.string "descripcion"
     t.string "estadoParametro"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "personas", force: :cascade do |t|
+    t.string "nombre"
+    t.string "apellido"
+    t.string "identification"
+    t.string "correo"
+    t.integer "idEstado"
+    t.integer "idTipo"
+    t.integer "idArea"
+    t.integer "idCargo"
+    t.integer "idTipoIdentificacion"
+    t.boolean "eliminado"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

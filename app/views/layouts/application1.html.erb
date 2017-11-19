@@ -5,12 +5,15 @@
      <meta charset="utf-8">
     <%= csrf_meta_tags %>
      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
   </head>
 
   <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <h1 class="logo"><a href="/inicio"><%= image_tag("Logo.png") %></a></h1>
+    </nav>
+
     <%= yield %>
-     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+     <%= javascript_include_tag 'application' %>
   </body>
 </html>
-
