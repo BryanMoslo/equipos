@@ -1,0 +1,20 @@
+<div id="content" class="content">
+  <div class="action-buttons mb-3 d-flex justify-content-between align-items-center mb-4">
+    <%= link_to "Regresar", personas_path, class: "btn btn-info" %>
+  </div>
+
+  <h4 class="mb-4"><%= @persona.nombre %> <%= @persona.apellido %></h4>
+  <ul class="info mb-3">
+    <li class="mb-3"><b>Identification: </b><%= @persona.idTipoIdentificacion %>, <%= @persona.identification %> </li>
+    <li class="mb-3"><b>Correo: </b><%= @persona.correo %> </li>
+    <li class="mb-3"><b>Estado: </b><%= @persona.idEstado %> </li>
+    <li class="mb-3"><b>Tipo de Persona: </b><%= @persona.idTipo %> </li>
+    <li class="mb-3"><b>Area: </b><%= @persona.idArea %> </li>
+    <li class="mb-3"><b>Cargo: </b><%= @persona.idCargo %> </li>
+  </ul>
+
+  <div>
+    <%= link_to "Editar", edit_persona_path(@persona.id), class: "btn btn-success" %>
+    <%= link_to 'Eliminar', persona_path(@persona.id), class: "btn btn-danger", method: "DELETE", data: {confirm: 'Estas seguro?'} %>
+  </div>
+</div>

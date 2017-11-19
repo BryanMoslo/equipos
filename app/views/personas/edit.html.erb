@@ -1,0 +1,79 @@
+<!-- Modal -->
+<div class="modal fade show" id="editPerson" style="opacity: 1; display: block;" tabindex="-1" role="dialog" aria-labelledby="editPersonLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Editar Persona</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <%= form_for @persona do |f| %>
+        <div class="modal-body">
+            <div class="d-flex flex-wrap">
+              <div class="form-group col-md-6">
+                <%= f.label 'Nombre' %>
+                <%= f.text_field :nombre, class: "form-control", placeholder: "Nombre", required: true %>
+              </div>
+              <div class="form-group col-md-6">
+                <%= f.label 'Nombre' %>
+                <%= f.text_field :apellido, class: "form-control", placeholder: "Apellido", required: true %>
+              </div>
+
+              <div class="form-group col-md-12">
+                <%= f.label 'Correo' %>
+                <%= f.email_field :correo, class: "form-control", placeholder: "Correo", required: true %>
+              </div>
+
+              <div class="form-group col-md-6">
+                <%= f.label 'Tipo de identificacion' %>
+                <select class="" name="">
+                  <option value="">Opcion 1</option>
+                </select>
+              </div>
+
+              <div class="form-group col-md-6">
+                <%= f.label 'Numero de Identificacion' %>
+                <%= f.text_field :identification, class: "form-control", placeholder: "Numero", required: true %>
+              </div>
+
+              <div class="form-group col-md-6">
+                <%= f.label 'Area de Trabajo' %>
+                <select class="" name="">
+                  <option value="">Opcion 1</option>
+                </select>
+              </div>
+
+              <div class="form-group col-md-6">
+                <%= f.label 'Cargo' %>
+                <select class="" name="">
+                  <option value="">Opcion 1</option>
+                </select>
+              </div>
+
+              <div class="form-group col-md-6">
+                <%= f.label 'Estado' %>
+                <select class="" name="">
+                  <option value="">Opcion 1</option>
+                </select>
+              </div>
+
+              <div class="form-group col-md-6">
+                <%= f.label 'Tipo' %>
+                <select class="" name="">
+                  <option value="">Opcion 1</option>
+                </select>
+              </div>
+
+            </div>
+        </div>
+        <div class="modal-footer">
+          <%= link_to "Mostrar", persona_path(@persona.id), class: "btn btn-warning" %>
+          <%= link_to "Regresar", personas_path, class: "btn btn-info" %>
+          <%= f.submit "Guardar", class: "btn btn-secondary" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

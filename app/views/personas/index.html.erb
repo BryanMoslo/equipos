@@ -1,0 +1,123 @@
+<div id="content" class="content">
+  <div class="action-buttons mb-3 d-flex justify-content-between align-items-center">
+    <button type="button" class="" data-toggle="modal" data-target="#addPerson">
+      Adicionar
+    </button>
+  </div>
+
+  <table class="">
+    <thead class="">
+      <tr>
+        <th>Nombre</th>
+        <th>Identificacion</th>
+        <th>Numero</th>
+        <th>Correo</th>
+        <th>Cargo</th>
+        <th class="">Estado</th>
+
+        <th class="">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @personas.each do |persona| %>
+        <tr>
+          <td>
+            <%= link_to(persona_path(persona.id)) do %>
+              <%= persona.nombre %> <%= persona.apellido %>
+            <% end %>
+          </td>
+          <td><%= persona.idTipoIdentificacion %></td>
+          <td><%= persona.identification %></td>
+          <td><%= persona.correo %></td>
+          <td><%= persona.idCargo %></td>
+
+          <td class="text-center"><%= persona.idEstado %> </td>
+
+          <td class="text-right">
+            <%= link_to 'Editar', edit_persona_path(persona.id), class: "" %>
+            <%= link_to 'Eliminar', persona_path(persona.id), class: "", method: "DELETE", data: {confirm: 'Estas seguro?'} %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="addPerson" tabindex="-1" role="dialog" aria-labelledby="addPersonLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Agregar Persona</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <%= form_for Persona.new do |f| %>
+        <div class="modal-body">
+
+            <div class="d-flex flex-wrap">
+              <div class="form-group col-md-6">
+                <%= f.label 'Nombre' %>
+                <%= f.text_field :nombre, class: "form-control", placeholder: "Nombre", required: true %>
+              </div>
+              <div class="form-group col-md-6">
+                <%= f.label 'Nombre' %>
+                <%= f.text_field :apellido, class: "form-control", placeholder: "Apellido", required: true %>
+              </div>
+
+              <div class="form-group col-md-12">
+                <%= f.label 'Correo' %>
+                <%= f.email_field :correo, class: "form-control", placeholder: "Correo", required: true %>
+              </div>
+
+              <div class="form-group col-md-6">
+                <%= f.label 'Tipo de identificacion' %>
+                <select class="" name="">
+                  <option value="">Opcion 1</option>
+                </select>
+              </div>
+
+              <div class="form-group col-md-6">
+                <%= f.label 'Numero de Identificacion' %>
+                <%= f.text_field :identification, class: "form-control", placeholder: "Numero", required: true %>
+              </div>
+
+              <div class="form-group col-md-6">
+                <%= f.label 'Area de Trabajo' %>
+                <select class="" name="">
+                  <option value="">Opcion 1</option>
+                </select>
+              </div>
+
+              <div class="form-group col-md-6">
+                <%= f.label 'Cargo' %>
+                <select class="" name="">
+                  <option value="">Opcion 1</option>
+                </select>
+              </div>
+
+              <div class="form-group col-md-6">
+                <%= f.label 'Estado' %>
+                <select class="" name="">
+                  <option value="">Opcion 1</option>
+                </select>
+              </div>
+
+              <div class="form-group col-md-6">
+                <%= f.label 'Tipo' %>
+                <select class="" name="">
+                  <option value="">Opcion 1</option>
+                </select>
+              </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-info" data-dismiss="modal">Regresar</button>
+          <%= f.submit "Guardar", class: "btn btn-secondary" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

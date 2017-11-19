@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :opciones
   resources :valor_parametros
   resources :usuarios
+  resources :personas
   resources :equipos
   resources :facturas
   root 'seguridad#login'
