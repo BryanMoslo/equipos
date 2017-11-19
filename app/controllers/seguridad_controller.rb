@@ -3,7 +3,6 @@ class SeguridadController < ApplicationController
  require "pp"
  include Servicios 
  def login 
-	p session[:logueado]
 	if session[:logueado]
 		redirect_to "/inicio"
 	else

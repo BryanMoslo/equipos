@@ -17,4 +17,6 @@
 
 class Opcione < ApplicationRecord
 	has_many :rol_opcion_operacione
+	scope :solo_activos, -> { where(estadoopcion: 'A')   }
+	scope :order_opcions, -> { order(orden: :asc)   }
 end
