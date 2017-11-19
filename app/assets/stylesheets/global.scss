@@ -1,0 +1,173 @@
+ul{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+h1{
+  font-size: 20px;
+  padding: 20px;
+  color: white;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+#tabs{
+  overflow: hidden;
+  min-height: 56px;
+  padding-top: 20px;
+  padding-left: 1px;
+}
+#tabs li {
+  float: left;
+  display: block;
+  background-color: #e2e2e2;
+  margin-right: 5px;
+  position: relative;
+  border-radius: 3px 3px 0 0;
+  cursor: pointer;
+
+  &:hover{
+    background-color: #fbfbfb;
+  }
+}
+
+#tabs li a{
+  text-decoration:none;
+
+  &.tab {
+    text-decoration: none;
+    padding: 7px 40px 8px 30px;
+    display: block;
+    color: #545454;
+    font-size: 14px;
+  }
+}
+#tabs li.current {
+  background-color: #ffffff;
+}
+
+#tabs li.current a {
+}
+
+#tabs li a.remove {
+  color: #a7a7a7;
+  position: absolute;
+  top: 2px;
+  right: 5px;
+  font-size: 14px;
+
+  &:hover{
+    color: red;
+  }
+}
+
+
+#content p { margin: 0; padding:20px 20px 100px 20px;}
+
+
+.left-navbar{
+  height: 100%;
+
+  h4{
+    color: #000;
+    font-size: 18px;
+    padding: 0 10px;
+
+  }
+
+  a{
+    color: #464646;
+    display: block;
+    padding: 10px;
+    font-weight: 200;
+
+    &.child{
+      padding-left: 40px;
+
+      &.active{background: white;}
+    }
+    &:hover{
+      text-decoration: none;
+      color: #000;
+    }
+    &.tab-parent{
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    i{margin-right: 8px;}
+  }
+}
+
+.info{
+  li{
+  }
+}
+.btn{cursor: pointer;}
+.tab-parent{
+  .fa-folder-o{
+    display: none;
+  }
+}
+
+.dropdown{
+
+  cursor: pointer;
+
+  &.show, &:hover{background-color: #f1f1f1 !important;}
+  .dropdown-toggle{
+    width: 100%;
+    text-align: center;
+    padding: 16px 0;
+  }
+  a{
+    &:hover{
+      text-decoration: none;
+    }
+  }
+}
+.dropdown-menu{
+  top: 14px !important;
+  right: -5px !important;
+  border-radius: 0;
+  border-top: 0;
+  transform: translate3d(0px, 40px, 0px) !important;
+
+  a{
+    width: 100%;
+    padding: 5px 10px;
+    display: block;
+
+    &:hover{
+      background-color: #f1f1f1 !important;
+    }
+  }
+}
+.justify-content-evenly{
+  justify-content: space-evenly;
+}
+
+.tab-parent.collapsed{
+  .fa-folder-open-o{
+    display: none;
+  }
+  .fa-folder-o{
+    display: inline-block;
+  }
+}
+
+.content{
+  padding: 20px;
+}
+.table{
+  tbody{
+    td{
+      vertical-align: middle;
+      font-size: 14px;
+    }
+  }
+}
+.logo{
+  img{
+    width: 100px;
+  }
+}
