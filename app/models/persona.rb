@@ -18,5 +18,4 @@
 #
 
 class Persona < ApplicationRecord
-  validates :persona, uniqueness: { message: "cedula existe, por favor verifique" }
 end
