@@ -1,11 +1,11 @@
 <div id="content" class="content">
   <div class="action-buttons mb-3 d-flex justify-content-between align-items-center">
-    <button type="button" class="" data-toggle="modal" data-target="#addPerson">
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addPerson">
       Adicionar
     </button>
   </div>
 
-  <table class="">
+  <table class="table">
     <thead class="">
       <tr>
         <th>Nombre</th>
@@ -13,9 +13,9 @@
         <th>Numero</th>
         <th>Correo</th>
         <th>Cargo</th>
-        <th class="">Estado</th>
+        <th class="text-center">Estado</th>
 
-        <th class="">Acciones</th>
+        <th class="text-center">Acciones</th>
       </tr>
     </thead>
     <tbody>
@@ -26,16 +26,16 @@
               <%= persona.nombre %> <%= persona.apellido %>
             <% end %>
           </td>
-          <td><%= persona.idTipoIdentificacion %></td>
+          <td><%= obtener_valor_parametro(persona.idTipoIdentificacion) %></td>
           <td><%= persona.identification %></td>
           <td><%= persona.correo %></td>
-          <td><%= persona.idCargo %></td>
+          <td><%= obtener_valor_parametro(persona.idCargo) %></td>
 
-          <td class="text-center"><%= persona.idEstado %> </td>
+          <td class="text-center"><i data-toggle="tooltip" data-placement="top" title="<%= obtener_valor_parametro(persona.idEstado) %>" class="fa <%= status_class(obtener_valor_parametro(persona.idEstado)) %>" aria-hidden="true"></i></td>
 
           <td class="text-right">
-            <%= link_to 'Editar', edit_persona_path(persona.id), class: "" %>
-            <%= link_to 'Eliminar', persona_path(persona.id), class: "", method: "DELETE", data: {confirm: 'Estas seguro?'} %>
+            <%= link_to 'Editar', edit_persona_path(persona.id), class: "btn btn-success btn-sm" %>
+            <%= link_to 'Eliminar', persona_path(persona.id), class: "btn btn-danger btn-sm", method: "DELETE", data: {confirm: 'Estas seguro?'} %>
           </td>
         </tr>
       <% end %>
@@ -74,8 +74,10 @@
 
               <div class="form-group col-md-6">
                 <%= f.label 'Tipo de identificacion' %>
-                <select class="" name="">
-                  <option value="">Opcion 1</option>
+                <select name="persona[idTipoIdentificacion]" id="idTipoIdentificacion" class="form-control">
+                  <% obtener_opciones("idTipoIdentificacion").each do |paramatro| %>
+                    <option value="<%= paramatro.id %>"><%= paramatro.valor %></option>
+                  <% end %>
                 </select>
               </div>
 
@@ -86,29 +88,37 @@
 
               <div class="form-group col-md-6">
                 <%= f.label 'Area de Trabajo' %>
-                <select class="" name="">
-                  <option value="">Opcion 1</option>
+                <select name="persona[idArea]" id="idArea" class="form-control">
+                  <% obtener_opciones("idArea").each do |paramatro| %>
+                    <option value="<%= paramatro.id %>"><%= paramatro.valor %></option>
+                  <% end %>
                 </select>
               </div>
 
               <div class="form-group col-md-6">
                 <%= f.label 'Cargo' %>
-                <select class="" name="">
-                  <option value="">Opcion 1</option>
+                <select name="persona[idCargo]" id="idCargo" class="form-control">
+                  <% obtener_opciones("idCargo").each do |paramatro| %>
+                    <option value="<%= paramatro.id %>"><%= paramatro.valor %></option>
+                  <% end %>
                 </select>
               </div>
 
               <div class="form-group col-md-6">
                 <%= f.label 'Estado' %>
-                <select class="" name="">
-                  <option value="">Opcion 1</option>
+                <select name="persona[idEstado]" id="idEstado" class="form-control">
+                  <% obtener_opciones("idEstado").each do |paramatro| %>
+                    <option value="<%= paramatro.id %>"><%= paramatro.valor %></option>
+                  <% end %>
                 </select>
               </div>
 
               <div class="form-group col-md-6">
                 <%= f.label 'Tipo' %>
-                <select class="" name="">
-                  <option value="">Opcion 1</option>
+                <select name="persona[idTipo]" id="idTipo" class="form-control">
+                  <% obtener_opciones("idTipo").each do |paramatro| %>
+                    <option value="<%= paramatro.id %>"><%= paramatro.valor %></option>
+                  <% end %>
                 </select>
               </div>
             </div>

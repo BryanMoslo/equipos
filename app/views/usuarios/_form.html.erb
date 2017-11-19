@@ -23,17 +23,17 @@
   </div>
 
   <div class="form-group row col-sm-4">
-    
+
     <%= form.label :"Rol" %>
     <% opciones = options_from_collection_for_select(@roles, "id","valor",@usuario.idrol) %>
-    <%= form.select(:idrol, opciones,{},{class:"form-control"} ) %>  
-    
+    <%= form.select(:idrol, opciones,{},{class:"form-control"} ) %>
+
   </div>
 
   <div class="form-group row col-sm-4">
-    <%= form.label "Estado" %>    
+    <%= form.label "Estado" %>
     <% opciones = options_from_collection_for_select(@estados, "id","valor",@usuario.idestadousuario) %>
-    <%= form.select(:idestadousuario, opciones,{},{class:"form-control"}) %> 
+    <%= form.select(:idestadousuario, opciones,{},{class:"form-control"}) %>
   </div>
 
   <div class="actions">

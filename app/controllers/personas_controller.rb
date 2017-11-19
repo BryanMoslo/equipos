@@ -1,5 +1,5 @@
 class PersonasController < ApplicationController
-  before_action :obtener_persona,   only: [:show, :edit, :update, :destroy]
+  before_action :obtener_persona, only: [:show, :edit, :update, :destroy]
 
   layout "application2"
 
@@ -8,8 +8,8 @@ class PersonasController < ApplicationController
   end
 
   def create
-    @persona = Persona.new(persona_params)
-    @persona.save
+    persona = Persona.new(persona_params)
+    persona.save
 
     redirect_to personas_path
   end

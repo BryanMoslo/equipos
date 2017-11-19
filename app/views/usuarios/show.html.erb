@@ -1,31 +1,16 @@
-<h4> Información de Usuario</h4>
-
-<hr>
-<div class="container">
- <%= link_to 'Regresar', usuarios_path,class:"btn btn-info" %>	
- <p id="notice"><%= notice %></p>
-
-<form >
-  <div class="form-group col-md-4">
-    <label>Usuario:</label>
-    <input type="text" class="form-control" value="<%= @usuario.usuario %>" readonly>
+<div id="content" class="content">
+  <div class="action-buttons mb-3 d-flex justify-content-between align-items-center mb-4">
+    <%= link_to "Regresar", usuarios_path, class: "btn btn-info" %>
   </div>
 
-	<div class="form-group col-md-4">
-	  <laber>Password:</labels>
-	  <input type="password" class="form-control" value="<%= @usuario.password %>" readonly>
-	</div> 
+  <h4 class="mb-4"><%= @usuario.usuario %></h4>
+  <ul class="info mb-3">
+    <li class="mb-3"><b>Rol: </b> <%= @rol %></li>
+    <li class="mb-3"><b>Estado: </b><%= @estado %> </li>
+  </ul>
 
-	<div class="form-group col-md-4">
-	  <label>Rol:</label>
-	  <input type="text" class="form-control" value="<%= @rol %>" readonly>	  
-	</div> 
-
-	<div class="form-group col-md-4">
-	  <label>Estado:</label>
-	  <input type="text" class="form-control" value="<%= @estado %>" readonly>  
-	</div> 
-</form>
- <%= link_to 'Modificar', edit_usuario_path(@usuario),class:"btn btn-success" %> 
-
+  <div>
+    <%= link_to "Editar", edit_usuario_path(@usuario.id), class: "btn btn-success" %>
+    <%= link_to 'Eliminar', usuario_path(@usuario.id), class: "btn btn-danger", method: "DELETE", data: {confirm: 'Estas seguro?'} %>
+  </div>
 </div>

@@ -28,8 +28,10 @@
 
               <div class="form-group col-md-6">
                 <%= f.label 'Tipo de identificacion' %>
-                <select class="" name="">
-                  <option value="">Opcion 1</option>
+                <select name="persona[idTipoIdentificacion]" id="idTipoIdentificacion" class="form-control">
+                  <% obtener_opciones("idTipoIdentificacion").each do |paramatro| %>
+                    <option value="<%= paramatro.id %>"><%= paramatro.valor %></option>
+                  <% end %>
                 </select>
               </div>
 
@@ -40,30 +42,22 @@
 
               <div class="form-group col-md-6">
                 <%= f.label 'Area de Trabajo' %>
-                <select class="" name="">
-                  <option value="">Opcion 1</option>
-                </select>
+                <%= collection_select("persona", :idArea, obtener_opciones("idArea"), :id, :valor, {selected: @persona.idArea}, class: "form-control" ) %>
               </div>
 
               <div class="form-group col-md-6">
                 <%= f.label 'Cargo' %>
-                <select class="" name="">
-                  <option value="">Opcion 1</option>
-                </select>
+                <%= collection_select("persona", :idCargo, obtener_opciones("idCargo"), :id, :valor, {selected: @persona.idCargo}, class: "form-control" ) %>
               </div>
 
               <div class="form-group col-md-6">
                 <%= f.label 'Estado' %>
-                <select class="" name="">
-                  <option value="">Opcion 1</option>
-                </select>
+                <%= collection_select("persona", :idEstado, obtener_opciones("idEstado"), :id, :valor, {selected: @persona.idEstado}, class: "form-control" ) %>
               </div>
 
               <div class="form-group col-md-6">
                 <%= f.label 'Tipo' %>
-                <select class="" name="">
-                  <option value="">Opcion 1</option>
-                </select>
+                <%= collection_select("persona", :idTipo, obtener_opciones("idTipo"), :id, :valor, {selected: @persona.idTipo}, class: "form-control" ) %>
               </div>
 
             </div>

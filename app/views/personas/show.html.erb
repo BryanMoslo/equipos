@@ -5,12 +5,12 @@
 
   <h4 class="mb-4"><%= @persona.nombre %> <%= @persona.apellido %></h4>
   <ul class="info mb-3">
-    <li class="mb-3"><b>Identification: </b><%= @persona.idTipoIdentificacion %>, <%= @persona.identification %> </li>
+    <li class="mb-3"><b>Identification: </b><%= obtener_valor_parametro(@persona.idTipoIdentificacion) %>, <%= @persona.identification %> </li>
     <li class="mb-3"><b>Correo: </b><%= @persona.correo %> </li>
-    <li class="mb-3"><b>Estado: </b><%= @persona.idEstado %> </li>
-    <li class="mb-3"><b>Tipo de Persona: </b><%= @persona.idTipo %> </li>
-    <li class="mb-3"><b>Area: </b><%= @persona.idArea %> </li>
-    <li class="mb-3"><b>Cargo: </b><%= @persona.idCargo %> </li>
+    <li class="mb-3"><b>Estado: </b><%= obtener_valor_parametro(@persona.idEstado) %> </li>
+    <li class="mb-3"><b>Tipo de Persona: </b><%= obtener_valor_parametro(@persona.idTipo) %> </li>
+    <li class="mb-3"><b>Area: </b><%= obtener_valor_parametro(@persona.idArea) %> </li>
+    <li class="mb-3"><b>Cargo: </b><%= obtener_valor_parametro(@persona.idCargo) %> </li>
   </ul>
 
   <div>

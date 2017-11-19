@@ -26,15 +26,15 @@
     <tbody>
       <% @personas.each do |persona| %>
         <tr>
-          <td><%= persona.idTipoIdentificacion %></td>
+          <td><%= obtener_valor_parametro(persona.idTipoIdentificacion) %></td>
           <td><%= persona.identification %></td>
           <td><%= persona.nombre %> <% persona.apellido %></td>
           <td><%= persona.correo %></td>
-          <td><%= persona.idCargo %></td>
-          <td><%= persona.idArea %></td>
+          <td><%= obtener_valor_parametro(persona.idCargo) %></td>
+          <td><%= obtener_valor_parametro(persona.idArea) %></td>
 
-          <td><%= persona.idTipo %></td>
-          <td><%= persona.idEstado %></td>
+          <td><%= obtener_valor_parametro(persona.idTipo) %></td>
+          <td><%= obtener_valor_parametro(persona.idEstado) %></td>
 
           <td class="text-right">
             <%= link_to 'Editar', edit_persona_path(persona.id), class: "btn btn-info btn-sm" %>
@@ -76,8 +76,10 @@
 
               <div class="form-group col-md-6">
                 <%= f.label 'Tipo de identificacion' %>
-                <select class="" name="">
-                  <option value="">Opcion 1</option>
+                <select name="persona[idTipoIdentificacion]" id="idTipoIdentificacion" class="form-control">
+                  <% obtener_opciones("idTipoIdentificacion").each do |paramatro| %>
+                    <option value="<%= paramatro.id %>"><%= paramatro.valor %></option>
+                  <% end %>
                 </select>
               </div>
 
@@ -88,29 +90,37 @@
 
               <div class="form-group col-md-6">
                 <%= f.label 'Area de Trabajo' %>
-                <select class="" name="">
-                  <option value="">Opcion 1</option>
+                <select name="persona[idArea]" id="idArea" class="form-control">
+                  <% obtener_opciones("idArea").each do |paramatro| %>
+                    <option value="<%= paramatro.id %>"><%= paramatro.valor %></option>
+                  <% end %>
                 </select>
               </div>
 
               <div class="form-group col-md-6">
                 <%= f.label 'Cargo' %>
-                <select class="" name="">
-                  <option value="">Opcion 1</option>
+                <select name="persona[idCargo]" id="idCargo" class="form-control">
+                  <% obtener_opciones("idCargo").each do |paramatro| %>
+                    <option value="<%= paramatro.id %>"><%= paramatro.valor %></option>
+                  <% end %>
                 </select>
               </div>
 
               <div class="form-group col-md-6">
                 <%= f.label 'Estado' %>
-                <select class="" name="">
-                  <option value="">Opcion 1</option>
+                <select name="persona[idEstado]" id="idEstado" class="form-control">
+                  <% obtener_opciones("idEstado").each do |paramatro| %>
+                    <option value="<%= paramatro.id %>"><%= paramatro.valor %></option>
+                  <% end %>
                 </select>
               </div>
 
               <div class="form-group col-md-6">
                 <%= f.label 'Tipo' %>
-                <select class="" name="">
-                  <option value="">Opcion 1</option>
+                <select name="persona[idTipo]" id="idTipo" class="form-control">
+                  <% obtener_opciones("idTipo").each do |paramatro| %>
+                    <option value="<%= paramatro.id %>"><%= paramatro.valor %></option>
+                  <% end %>
                 </select>
               </div>
             </div>

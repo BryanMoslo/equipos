@@ -6,39 +6,29 @@ class UsuariosController < BaseController
   # GET /usuarios
   # GET /usuarios.json
   require "pp"
-  def index
-    @todos = Usuario.all
-    #pp @todos
-    @usuarios = @todos.map do |u|
-       {
-         "id"            => u.id,
-         "usuario"       => u.usuario,
-         "EstadoUsuario" => TraerValorParametro(u.idestadousuario),
-         "Rol"           => TraerValorParametro(u.idrol)
-        }
-      end
-      #pp @usuarios
+  layout "application2"
 
+  def index
+    @usuarios = Usuario.all
+    @roles = Servicios.TraerParametros(2)
+    @estados = Servicios.TraerParametros(1)
   end
 
   # GET /usuarios/1
   # GET /usuarios/1.json
   def show
-    @rol =TraerValorParametro(@usuario.idrol)
-    @estado=TraerValorParametro(@usuario.idestadousuario)
+    @rol = Servicios.TraerValorParametro(@usuario.idrol)
+    @estado= Servicios.TraerValorParametro(@usuario.idestadousuario)
   end
 
   # GET /usuarios/new
   def new
-    @usuario = Usuario.new
-    @roles = TraerParametros(2)
-    @estados = TraerParametros(1)
   end
 
   # GET /usuarios/1/edit
   def edit
-    @roles = TraerParametros(2)
-    @estados = TraerParametros(1)
+    @roles = Servicios.TraerParametros(2)
+    @estados = Servicios.TraerParametros(1)
   end
 
   # POST /usuarios
@@ -46,29 +36,22 @@ class UsuariosController < BaseController
   def create
     @usuario = Usuario.new(usuario_params)
 
-    respond_to do |format|
-      if @usuario.save
-        format.html { redirect_to @usuario, notice: 'Usuario creado exitosamente' }
-        format.json { render :show, status: :created, location: @usuario }
-      else
-        format.html { render :new }
-        format.json { render json: @usuario.errors, status: :unprocessable_entity }
-      end
+    if @usuario.save
+      redirect_to usuarios_path
+    else
+      format.html { render :new }
+      format.json { render json: @usuario.errors, status: :unprocessable_entity }
     end
   end
 
   # PATCH/PUT /usuarios/1
   # PATCH/PUT /usuarios/1.json
   def update
-
-    respond_to do |format|
-      if @usuario.update(usuario_params)
-        format.html { redirect_to @usuario, notice: 'Usuario Actualizado' }
-        format.json { render :show, status: :ok, location: @usuario }
-      else
-        format.html { render :edit }
-        format.json { render json: @usuario.errors, status: :unprocessable_entity }
-      end
+    if @usuario.update(usuario_params)
+      redirect_to usuarios_path
+    else
+      format.html { render :edit }
+      format.json { render json: @usuario.errors, status: :unprocessable_entity }
     end
   end
 
@@ -78,7 +61,7 @@ class UsuariosController < BaseController
 
     @usuario.destroy
     respond_to do |format|
-      format.html { redirect_to usuarios_url, notice: 'Usuario was successfully destroyed.' }
+      format.html { redirect_to usuarios_url }
       format.json { head :no_content }
     end
   end
