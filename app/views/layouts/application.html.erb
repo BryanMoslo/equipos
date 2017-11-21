@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>RubyPlus</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+        <%= csrf_meta_tags %>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-2">
+                <%= image_tag("Logo.png", :class => "logo") %>
+            </div>
+            <div class="col-lg-10 d-flex justify-content-end">
+
+                <div class="dropdown">
+
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+
+                        <i class="fa fa-user fa-fw"></i>
+                        <%= session[:usuario] %>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-gear fa-fw"></i>Cambiar Pwd</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="/logout">
+                                <i class="fa fa-sign-out fa-fw"></i> Salir</a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-user -->
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-2">
+              <%=raw @html %>
+            </div>
+            <div class="col-lg-10">
+                <%= yield %>
+            </div>
+        </div>
+    </div>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+        <script>
+            $(function () {
+                $('[data-toggle="tooltip"]').tooltip()
+            })
+        </script>
+
+</body>
+
+</html>
