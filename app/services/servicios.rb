@@ -13,20 +13,11 @@ module Servicios
   end
 
   def self.TraerOpcionesParametros(params)
-    p "PARAMS"
-    p params
-
     unless params.nil?
       parametros = Parametro.where(atributo: params)
-      p "PARAMETROS"
-      p parametros
+
       unless parametros.blank?
         parametroId = parametros.first.id
-        p "PAID"
-        p parametroId
-
-        p ValorParametro.where(parametro_id: parametroId).select(:valor, :id)
-
         ValorParametro.where(parametro_id: parametroId).select(:valor, :id)
       end
     end

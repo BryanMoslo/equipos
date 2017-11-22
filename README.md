@@ -17,4 +17,4 @@ $ rails serve
 ```
 
 ##### Video
-http://youtube.com
+https://www.youtube.com/watch?v=M6IVn-RSXNw
