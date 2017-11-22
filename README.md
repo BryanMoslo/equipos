@@ -2,7 +2,7 @@
 
 ---
 
-##### Proyectcillo 5 - Integrantes
+##### Proyectillo 5 - Integrantes
 
 * Andres Martinez
 * Bryan Algutria
@@ -14,6 +14,11 @@
 $ bundle install
 $ rails db:migrate
 $ rails serve
+```
+
+##### Login
+```
+hpajaro/1234
 ```
 
 ##### Video
