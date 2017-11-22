@@ -1,8 +1,8 @@
-# Evaluacion individual de Programacion Web
+# Evaluacion grupal de Programacion Web
 
 ---
 
-##### Proyectillo 5 - Integrantes
+#### Proyectillo 5 - Integrantes
 
 * Andres Martinez
 * Bryan Algutria
